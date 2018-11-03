@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 3000px;
+        }
+        .screen ul > li {
+        	color: #fff;
+        	font-size: 88px;
+        	text-align: center;
+        }
+        .screen ul > li:nth-of-type(1) {
+        	background: red;
+        }
+        .screen ul > li:nth-of-type(2) {
+        	background: green;
+        }
+        .screen ul > li:nth-of-type(3) {
+        	background: yellow;
+        }
+        .screen ul > li:nth-of-type(4) {
+        	background: pink;
+        }
+        .screen ul > li:nth-of-type(5) {
+        	background: black;
+        }
+        .screen ul > li:nth-of-type(6) {
+        	background: red;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+            z-index: 1000;
+
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ol>
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script>
+	$(function(){
+    	var count = $('ul li');
+    	var w = $('ul li').width();
+    	var num = 0;
+    	// 鼠标移入和移开盒子
+		$('#box').mouseenter(function(){
+			$('#arr').stop().show(200);
+			clearInterval(timerId);
+		}).mouseleave(function(){
+			$('#arr').stop().hide(200);
+			timerId = setInterval(function () {
+        		arrRight();
+    		}, 1200)
+		})
+
+		console.log(w);
+		for(var i = 0; i < count.length; i++) {
+			var li = document.createElement('li');
+	        $('ol').append(li);
+	        li.innerHTML = i + 1;
+	        li.index = i;
+		}
+		// 鼠标滑过
+		$('ol li').mouseenter(function(){
+			$(this).addClass('current').siblings().removeClass('current');
+			num = $(this).index();
+			$('ul').stop().animate({"left":-w*num});
+		})
+
+		// 克隆ul第li一个放到最后
+		$("ul li:eq(0)").clone().appendTo($("ul"));
+		// 默认为第一个
+		$("ol li:eq(0)").addClass('current');
+
+		// 点击右边函数封装
+		function arrRight(){
+			if (num === count.length) {
+				num = 0;
+            	$('ul').css({"left":0});
+			}
+			num++;
+			if (num <= count.length) {
+				if (num === count.length) {
+					$('ol li').eq(0).addClass('current').siblings().removeClass('current');;
+				}
+				$('ul').stop().animate({"left":-w*num});
+				$('ol li').eq(num).addClass('current').siblings().removeClass('current');
+			}
+		}
+		$('#right').click(arrRight);
+
+		// 点击左边动画(这里没必要封装)
+		$('#left').click(function(){
+			if (num === 0) {
+				num = count.length;
+            	$('ul').css({"left":-w*num});
+			}
+			num--;
+			if (num <= count.length) {
+				$('ul').stop().animate({"left":-w*num});
+			}
+		})
+
+		// 定时器实现自动播放
+		var timerId = setInterval(function () {
+        	arrRight();
+    	}, 1200)
+
+
+	})
+</script>
+</body>
+</html>
