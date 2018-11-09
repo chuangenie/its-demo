@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model = "a" >
+        <select name="" id="" v-model = "pre">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" name="" id="" v-model = "b" >
+        <button @click = "cale">=</button>
+        <input type="text" name="" id="" v-model = "c">
+    </div>
+
+    <script>
+        
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 0,
+                b: 0,
+                c: 0,
+                pre: "+"
+            },
+            methods: {
+                cale () {
+                    switch (this.pre) {
+                        case "+" : 
+                            this.c = parseFloat(this.a) + parseFloat(this.b)
+                            break;
+                        case "-" : 
+                            this.c = parseFloat(this.a) - parseFloat(this.b)
+                            break;
+                        case "*" : 
+                            this.c = parseFloat(this.a) * parseFloat(this.b)
+                            break;
+                        case "/" : 
+                            this.c = parseFloat(this.a) / parseFloat(this.b)
+                            break;
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
