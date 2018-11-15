@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<script src="lib/vue-2.4.0.js"></script>
+<link rel="stylesheet" href="./lib/animate.css">
+<style>
+    .v-enter,
+    .v-leave-to {
+        opacity: 0;
+        transform: translateX(150px)
+    }
+    .v-enter-active,
+    .v-leave-active {
+        transition: all 0.8s ease;
+    }
+
+    .my-enter,
+    .my-leave-to {
+        opacity: 0;
+        transform: translatey(150px)
+    }
+    .my-enter-active,
+    .my-leave-active {
+        transition: all 0.8s ease;
+    }
+
+    .ball {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click = "flag = !flag">
+        <transition name = "v">
+            <h3 v-if = "flag">这是一个测试</h3>
+        </transition>
+
+        <hr>
+
+        <input type="button" value="修改前缀动画" @click = "we = !we">
+        <transition name = "my">
+            <h3 v-if = "we">这是一个测试</h3>
+        </transition>
+
+        <hr>
+
+        <input type="button" value="第三方插件动画" @click = "ddd = !ddd">
+        <transition
+        enter-active-class = "bounceIn"
+        leave-active-class = "bounceOut"
+        :duration = "{ enter: 2000, leave: 4000 } ">
+            <h3 v-if = "ddd" class="animated">这是一个测试</h3>
+        </transition>
+
+        <hr>
+
+        <input type="button" value="小球动画" @click = "ball = !ball">
+        <transition
+            @before-enter = "beforeEnter"
+            @enter = "enter"
+            @after-enter = "afterEnter">
+            <div class="ball" v-show = "ball"></div>
+        </transition>
+    </div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            flag: false,
+            we: false,
+            ddd: false,
+            ball: false
+        },
+        methods: {
+            beforeEnter(el) {
+                el.style.transform = "translate(0, 0)"
+            },
+            enter(el, done) {
+                el.offsetWidth
+                el.style.opacity =  "1"
+                el.style.transform = "translate(150px, 400px)"
+                el.style.transition = "all 1s ease"
+                done()
+            },
+            afterEnter(el) {
+                this.ball = !this.ball
+            }
+        }
+    })
+</script>
+</body>
+</html>

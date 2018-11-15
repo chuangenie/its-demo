@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<script src="lib/vue-2.4.0.js"></script>
+<style>
+        .v-enter,
+        .v-leave-to {
+          opacity: 0;
+          transform: translateX(150px);
+        }
+    
+        .v-enter-active,
+        .v-leave-active {
+          transition: all 0.5s ease;
+        }
+      </style>
+</head>
+<body>
+    <div id="app">
+        <a href="" @click.prevent = "flag = true">Vue.extend</a>
+        <a href="" @click.prevent = "flag = false">Vue.componennt</a>
+        <my-com1></my-com1>
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+        <transition mode = "in-out">
+             <cpmponent :is = "comName"></cpmponent>
+        </transition>
+        <mycom2 v-if = "flag"></mycom2>
+        <mycom3 v-else = "flag"></mycom3>
+        <mycom4></mycom4>
+        <mycom5></mycom5>
+        <counter></counter>
+        <counter></counter>
+    </div>
+
+    <div id="app2">
+        <mycom4></mycom4>
+        <dddd></dddd>
+        <mycom5></mycom5>
+        <counter></counter>
+    </div>
+    
+    <template id="tmp">
+        <h3>这是用 template 在app外部定义的组件结构</h3>
+    </template>
+
+    <template id="tmp2">
+        <h3>这是私有的 login 组件</h3>
+    </template>
+
+    <template id="tmp3">
+        <div>
+            <input type="button" value="点击+1" @click = "addData">
+            <h3>{{ count }}</h3>
+        </div>
+    </template>
+
+<script>
+
+    var com1 = Vue.extend({
+        template: '<h3>这是用 Vue.extend 创建的组件</h3>'
+    })
+    Vue.component('myCom1',com1)
+
+    Vue.component('mycom2', Vue.extend({
+        template: '<h3>这也是用 Vue.extend 创建的组件</h3>'
+    }))
+
+    // 注意:不论是哪种方式创建出来的组件,组件的 template 属性指向的模板内容,必须有且只能有唯一的一个根元素
+    Vue.component('mycom3', {
+        template: '<h3>这是直接用 Vue.componennt 创建的组件</h3>'
+    })
+
+    Vue.component('mycom4', {
+        template: '#tmp'
+    })
+
+    // 组件中的data数据,必须为一个方法且方法里面必须返回一个对象
+    Vue.component('mycom5', {
+        template: '<h1>这是全局组件 --- {{ msg }}</h1>',
+        data: function () {
+            return {
+                msg: '这是组件中data定义的数据'
+            }
+        }
+    })
+
+    // 这是一个计数器的组件, 身上有个按钮,每当点击按钮,让 data 中的 count 值 +1
+    var dataObj = { count: 0 }
+    Vue.component('counter', {
+        template: '#tmp3',
+        data: function () {
+            return { count: 0 }
+        },
+        methods: {
+            addData() {
+                this.count ++
+            }
+        }
+    })
+
+    Vue.component('login', {
+      template: '<h3>登录组件</h3>'
+    })
+
+    Vue.component('register', {
+      template: '<h3>注册组件</h3>'
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            flag: false,
+            comName: 'login'
+        },
+        methods: {}
+    })
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {},
+        methods: {},
+        filters: {},
+        directives: {},
+        components: {
+            dddd: {
+                template: '#tmp2'
+            }
+        }
+    })
+</script>
+</body>
+</html> 
