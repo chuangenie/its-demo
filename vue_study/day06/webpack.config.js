@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // 通过 npm 安装
 const webpack = require('webpack'); // 用于访问内置插件
 
 module.exports = {
-    // mode: 'production', // production 会压缩  development不会压缩
+    mode: 'development', // production 会压缩  development不会压缩
     entry: path.join(__dirname, './src/main.js'), // 要打包哪个文件
     output: {
-        path: path.join(__dirname, 'dist'), // 指定打包的文件输出到哪个目录下去(若无此目录则会自动创建)
+        path: path.resolve(__dirname, 'dist'), // 指定打包的文件输出到哪个目录下去(若无此目录则会自动创建)
         filename: 'my-bundle.js' // 指定打包好的文件名
     },
 
@@ -29,7 +29,9 @@ module.exports = {
     module: {
         rules: [
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }
+            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
+            { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
         ]
-    }
+    },
+    // mode: 'development'
 }
