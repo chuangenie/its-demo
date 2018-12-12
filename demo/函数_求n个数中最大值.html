@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var max = [0];
+		function getMax(arr) {
+			for (var i = 0; i < arr.length; i++) {
+				if (max[0] < arr[i]) {
+					max[0] = arr[i];
+				}
+			}
+			console.log(max);
+		}
+		var arrMax = [12,25,36,52,46];
+		getMax(arrMax);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
