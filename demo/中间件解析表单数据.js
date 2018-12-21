@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile('./index.html', {root: __dirname })
+    res.sendFile('./index.html', { root: __dirname })
 })
 
 app.post('/postdata', (req, res) => {

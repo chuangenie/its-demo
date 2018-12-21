@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 0.闰年判断
+		var year = 1000;
+		if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+			console.log('yes闰年');
+		} else {
+			console.log('no闰年');
+		}
+
+		// 1.判断一个年龄是否成年, 当年龄超过18 返回  成年  否则返回未成年
+		var age = 17;
+		age >= 18 ? console.log('成年') : console.log('未成年');
+
+		// 2.判断奇偶数
+		var num1 = 20;
+		if (num1 <= 0) {
+			console.log('非法数据');
+		} else if (num1 % 2 === 0) {
+			console.log('偶数');
+		} else {
+			console.log('奇数');
+		}
+
+		// 3. 分数转换，把百分制转换成ABCDE   <60  E  60-70 D  70-80 C  80-90 B  90 - 100 A
+		var fenshu = 88;
+		var num2 = parseInt(fenshu/10);
+		switch (num2) {
+			case 10:
+			case 9:
+				console.log('A');
+				break;
+			case 8:
+				console.log('B');
+				break;
+			case 7:
+				console.log('C');
+				break;
+			case 6:
+				console.log('D');
+				break;
+			default:
+				console.log('E');
+				break;
+		}
+
+		// 4.获取两个数中的最大值
+		var num3 = 50;
+		var num4 = 40;
+		num3 > num4 ? console.log(num3) : console.log(num4);
+
+		// 5.switch星期转换练习
+		var num5 = 2;
+		switch (num5) {
+			case 1:
+				console.log('星期一');
+				break;
+			case 2:
+				console.log('星期二');
+				break;
+			case 3:
+				console.log('星期三');
+				break;
+			case 4:
+				console.log('星期四');
+				break;
+			case 5:
+				console.log('星期五');
+				break;
+			case 6:
+				console.log('星期六');
+				break;
+			case 7:
+				console.log('星期天');
+				break;
+			default:
+				console.log('非法数据')
+				break;
+		}
+
+		// 6.交换两个变量的值
+		var num6;
+		var num7;
+		temp = num6;
+		num6 = num7;
+		num7 = temp;
+
+		// 7. 计算1-100之间所有数的和
+		var num8 = 0;
+		for (var i = 0; i <= 100; i++) {
+			num8 += i;
+		}
+		console.log(num8);
+
+		// 8.打印100以内 7的倍数
+		for (var num9 = 1; num9 < 100; num9++) {
+			if(num9 % 7 === 0) {
+				console.log(num9);
+			}
+		}
+
+		// 9.将字符串数组用|或其他符号分割	
+		var numbers1 = ['一','二','三','四','五'];
+		var numbers2 = numbers1[0];	
+		for (var i = 1; i < numbers1.length; i++) {
+			var str = ' | ';
+			numbers2 += str + numbers1[i];
+		}
+		console.log(numbers2);
+
+		// 10.打印100以内所有偶数的和
+		var num10 = 0;
+		for (var i = 1; i <= 100; i++) {
+			if (i % 2 === 0) {
+				num10 += i;
+			}
+		}
+		console.log(num10);
+
+		// 11.求100以内所有3的倍数之和(do-while实现)
+		var num11 = 0;
+		var i = 1;
+		do {
+			if (i % 3 === 0) {
+				num11 += i;
+			}
+			i++;
+		} while (i <= 100)
+		console.log(num11);
+
+		// 12.求1-100之间所有数的平均值(for)
+		var num12 = 0;
+		for (var i = 1; i <=100; i++) {
+			num12 += i;
+		}
+		var getNum12 = num12/100;
+		console.log(getNum12);
+
+		// 13.求1-100之间所有偶数和奇数的和
+		var num13 = 0;
+		var num14 = 0;
+		for (var i = 1; i <= 100; i++) {
+			if (i % 2 === 0) {
+				num13 += i;
+			} else {
+				num14 += i;
+			}
+		}
+		console.log('奇数和：' + num14);
+		console.log('偶数和：' + num13);
+
+		// 14.打印正方形(for)
+		var strr = '';
+		for (var j = 0; j < 9; j++) {
+			strr += '\n'
+			for (var i = 0; i < 9; i++) {
+				var xx = '*'
+				strr += xx + ' ';
+			}
+		}	
+		console.log(strr);
+
+		// 15.打印三角形(for)  16.打印99乘法表(for)
+		var strr = '';
+		for (var j = 1; j <= 9; j++) {
+			strr += '\n'
+			for (var i = j; i <= 9; i++) {
+				var xx = '*'
+				strr += j + '*' + i + '=' + j*i + '\t';
+			}
+		}	
+		console.log(strr);
+
+		// 17.求整数50～200的第一个能被7整除的数(break)
+		for (var i = 50; i <= 200; i++) {
+			 if (i % 7 === 0) {
+			 	console.log(i);
+			 	break;
+			 }
+		}
+
+		// 18.求整数1～100的累加值，但要求跳过所有个位为3的数(continue)
+		var num15 = 0;
+		for (var i = 1; i <= 100; i++) {
+			if (i % 10 !== 3) {
+				num15 += i;
+			}
+		}
+		console.log(num15);
+
+		// 19.遍历数组
+		var numbers3 = ['12','55','36','23','42','47'];
+		for (var i = 0; i < numbers3.length; i++) {
+			console.log(numbers3[i]);
+		}
+
+		// 20.倒叙输出数组
+		var numbers4 = ['1','2','3','4','5'];
+		var newBer = [];
+		for (var i = numbers4.length - 1; i >= 0; i--) {
+			newBer[newBer.length] = numbers4[i];
+		}
+		console.log(newBer);
+
+		// 21.增加数组和清空数组
+		var numbers5 = ['1','5','8','7','6','3'];
+		numbers5[1] = '77';		
+		console.log(numbers5);
+
+		// 22.求一组数的和和平均值
+		var numbers6 = [12,54,85,32,64,35,21];
+		var getbers6 = 0;
+		for (var i = 0; i < numbers6.length; i++) {
+			getbers6 += numbers6[i];
+		}
+		sroebers6 = getbers6/numbers6.length;
+		console.log('和：' + getbers6);
+		console.log('平均值：' + parseInt(sroebers6));
+
+		// 23.冒泡排序
+		var numbers7 = [12,54,85,32,64,35,21];
+		var newbers7 = [];
+		for (var j = 0; j < numbers7.length - 1; j++) {
+			for (var i = 0; i < numbers7.length - 1 - j; i++) {
+				if (numbers7[i] > numbers7[i + 1]) {
+					temp = numbers7[i];
+					numbers7[i] = numbers7[i + 1];
+					numbers7[i + 1] = temp;
+				}			
+			}
+		}	
+		console.log(numbers7);
+
+		// 24.将获取1-100之间所有数的和用函数实现
+		function getnum16() {
+			var num16 = 0;
+			for (var i = 0; i <= 100; i++) {
+				num16 += i;
+			}
+			console.log(num16);
+		}
+		getnum16();
+
+		// 25.实现1到任意数之间的和
+		function getnum17(n) {
+			var num17 = 0;
+			for (var i = 0; i <= n; i++) {
+				num17 += i;
+			}
+			console.log(num17);
+		}
+		getnum17(99);
+
+		// 26.实现任意数到任意数之间的和
+		function getnum18(n,m) {
+			var num18 = 0;
+			for (var i = n; i <= m; i++) {
+				num18 += i;
+			}
+			console.log(num18);
+		}
+		getnum18(2,100);
+
+		// 27.计算两个数的和
+		function getnum19(n,m) {
+			var num19 = n + m;
+			console.log(num19);
+		}
+		getnum19(22,12);
+
+		// 28.计算圆的面积
+		function getnum20(n) {
+			var pI = Math.PI;
+			var num20 = pI * n * n;
+			console.log(num20);
+		}
+		getnum20(5);
+
+		// 29.求任意两个数中的最大值
+		function getnum21(n,m) {
+			n > m ? console.log(n) : console.log(m);
+			return;
+		}
+		getnum21(22,12);
+
+		// 30.求3个数中的最大值
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
