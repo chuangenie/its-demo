@@ -5,17 +5,17 @@ const app = express()
 const mysql = require('mysql')
 
 const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'user'
-})
-// 查
-// const sqlStr1 = 'select * from user_info'
-// conn.query(sqlStr1, (err, result) => {
-//     if (err) return console.log('获取数据失败:'+ err.message)
-//     console.log(result)
-// })
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'user'
+    })
+    // 查
+    // const sqlStr1 = 'select * from user_info'
+    // conn.query(sqlStr1, (err, result) => {
+    //     if (err) return console.log('获取数据失败:'+ err.message)
+    //     console.log(result)
+    // })
 
 // 增
 // const user = { name: 'peiddd', gender: '男'}
@@ -36,7 +36,7 @@ const conn = mysql.createConnection({
 // 删
 const sqlStr4 = 'delete from user_info where id = ?'
 conn.query(sqlStr4, 16, (err, result) => {
-    if (err) return console.log('删除数据失败:'+ err.message)
+    if (err) return console.log('删除数据失败:' + err.message)
     console.log(result)
 })
 

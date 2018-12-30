@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// var numbers = [33,95,44,32,752];
+		// var sum = 0;
+		// var msg;
+		// for(var i = 0; i < numbers.length; i++){
+		// 	sum += numbers[i];
+		// }
+		// msg = sum / numbers.length
+		// // 和
+		// console.log('和：' + sum);
+		// // 平均值
+		// console.log('平均值：' + msg);
+
+		// var numbers = [54,32,45,89,62];
+		// var max = numbers[0];
+		// for(var i = 0; i < numbers.length; i++){
+		// 	if(max < numbers[i]){
+		// 		max = numbers[i];
+		// 	}
+		// }
+		// console.log(max)
+
+		var numbers = [54,32,45,89,62];
+		var max = numbers[0];
+		var mix = numbers[0];
+		var maxIndex = 0;
+		var mixIndex = 0;
+		for(var i = 0; i < numbers.length; i++){
+			if(max < numbers[i]){
+		 		max = numbers[i];
+		 		maxIndex = i;
+		 	}
+			if(mix > numbers[i]){
+				mix = numbers[i];
+				mixIndex = i;
+			}
+		}
+		console.log('最小值：' + mix);
+		console.log(mixIndex);
+		console.log('最大值：' + max);
+		console.log(maxIndex);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
