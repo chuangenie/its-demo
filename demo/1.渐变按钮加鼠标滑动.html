@@ -38,7 +38,7 @@
         transform: translate(-50%,-50%);
         transition: width .2s ease, height .2s ease;
     }
-    div:hover::after{
+    div:hover::after{ 
         --size: 200px;
     }
     
@@ -51,6 +51,7 @@
 
 
     <script>
+
         document.querySelector("div").onmousemove = function(e){
             // console.log(e.target.offsetLeft);
             //得到鼠标在div中的位移  e.pageX(Y)是鼠标在页面的坐标,e.target.offsetLeft(Top)是btn距网页的距离
@@ -63,7 +64,6 @@
             e.target.style.setProperty("--my",mouseY+"px");
 
         }
-    
     
     </script>
 </body>
