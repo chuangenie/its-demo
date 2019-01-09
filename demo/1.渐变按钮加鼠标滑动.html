@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    span { 
+        color: white;
+    }
+    div{
+        position: relative;
+        width: 200px;
+        height: 35px;
+        margin: 100px auto;
+        padding-top: 15px;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 3px 2px 4px #ccc;
+        background: linear-gradient(45deg,#E2B0FF,#9644D3);
+        text-align: center;
+    }
+    div::after {
+        --size: 0px;
+
+
+        content: "";
+        position: absolute;
+        /*css中的变量用var()*/
+        left: var(--mx);
+        top: var(--my);
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        background: radial-gradient(circle closest-side,skyblue,transparent);
+        /*可直接实现定位元素在父元素居中位置 同margin-top:-height/2*/
+        transform: translate(-50%,-50%);
+        transition: width .2s ease, height .2s ease;
+    }
+    div:hover::after{
+        --size: 200px;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div><span>YOUR POINT HERE</span></div>
+
+
+
+    <script>
+        document.querySelector("div").onmousemove = function(e){
+            // console.log(e.target.offsetLeft);
+            //得到鼠标在div中的位移  e.pageX(Y)是鼠标在页面的坐标,e.target.offsetLeft(Top)是btn距网页的距离
+            var mouseX = e.pageX - e.target.offsetLeft;
+            var mouseY = e.pageY - e.target.offsetTop;
+            // console.log(mouseX+ "---" +mouseY);
+            // console.log(e.target.style);
+            // setProperty方法可以自定义css的变量和属性
+            e.target.style.setProperty("--mx",mouseX+"px");
+            e.target.style.setProperty("--my",mouseY+"px");
+
+        }
+    
+    
+    </script>
+</body>
+</html>
