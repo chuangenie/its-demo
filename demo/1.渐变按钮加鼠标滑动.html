@@ -48,22 +48,20 @@
 <body>
     <div><span>YOUR POINT HERE</span></div>
 
-
-
     <script>
 
         document.querySelector("div").onmousemove = function(e){
             // console.log(e.target.offsetLeft);
             //得到鼠标在div中的位移  e.pageX(Y)是鼠标在页面的坐标,e.target.offsetLeft(Top)是btn距网页的距离
-            var mouseX = e.pageX - e.target.offsetLeft;
+            var mouseX = e.pageX - e.target.offsetLeft; 
             var mouseY = e.pageY - e.target.offsetTop;
-            // console.log(mouseX+ "---" +mouseY);
-            // console.log(e.target.style);
-            // setProperty方法可以自定义css的变量和属性
+            // console.log(mouseX+ "---" +mouseY);  
+            // console.log(e.target.style); 
+            // setProperty方法可以自定义css的变量和属性  
             e.target.style.setProperty("--mx",mouseX+"px");
             e.target.style.setProperty("--my",mouseY+"px");
 
-        }
+        } 
     
     </script>
 </body>
