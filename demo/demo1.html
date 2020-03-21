@@ -45,13 +45,21 @@
 	// 	}
 	// 	i++;
 	// }
-	var sum = 0;
-	var avg;
-	for (var i = 1; i <= 100; i++) {
-		sum += i;
+	// var sum = 0;
+	// var avg;
+	// for (var i = 1; i <= 100; i++) {
+	// 	sum += i;
+	// }
+	// avg = i;
+	// console.log(parseFloat(sum/avg))
+	var str = "";
+	for (var i = 1; i < 10; i++) {
+		for(var j = i; j < 10; j++) {
+			str += i + "*" + j + "=" + i * j + "\t";
+		}
+		str += "\n";
 	}
-	avg = i;
-	console.log(parseFloat(sum/avg))
+	console.log(str);
 </script>
 
 </html>
