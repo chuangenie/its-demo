@@ -14,9 +14,6 @@
 	<h1>holle word</h1>
 	<h1>holle word</h1>
 	<h1>holle word</h1>
-	<h1>holle word</h1>
-	<h1>holle word</h1>
-	<h1>holle word</h1>
 </body>
 
 <script>
@@ -59,7 +56,27 @@
 		}
 		str += "\n";
 	}
-	console.log(str);
+	console.log(str); 
+	var numbers = [12,34,123,43,5,78];
+	var tmp;
+	var dd = 0;
+	for (var i = 0; i < numbers.length - 1; i++) {
+		var isSort = true;
+		for(var j = 0; j < numbers.length - 1 - i; j++) {
+			dd++;
+			if(numbers[j] < numbers[j + 1]) {
+				isSort = false;
+				tmp = numbers[j + 1];
+				numbers[j + 1] = numbers[j];
+				numbers[j] = tmp;
+			}
+		}
+		if (isSort) {
+			break;
+		}
+	}
+	console.log(dd);
+	console.log(numbers)
 </script>
 
 </html>
