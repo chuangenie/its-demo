@@ -77,9 +77,21 @@
 	}
 	console.log(dd);
 	console.log(numbers);
-	function name(params) {
-		
+	function getFb(n) {
+		var n1 = 1;
+		var n2 = 1;
+		var n3 = 2;
+		for (var i = 3; i < n; i++) {
+			n1 = n2;
+			n2 = n3;
+			n3 = n1 + n2;
+		}
+		if (n == 1 || n == 2) {
+			n3 = 1;
+		}
+		console.log(n3)
 	}
+	getFb(2)
 </script>
 
 </html>
