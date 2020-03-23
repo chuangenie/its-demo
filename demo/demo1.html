@@ -57,26 +57,26 @@
 		str += "\n";
 	}
 	console.log(str); 
-	var numbers = [12,34,123,43,5,78];
-	var tmp;
-	var dd = 0;
-	for (var i = 0; i < numbers.length - 1; i++) {
-		var isSort = true;
-		for(var j = 0; j < numbers.length - 1 - i; j++) {
-			dd++;
-			if(numbers[j] < numbers[j + 1]) {
-				isSort = false;
-				tmp = numbers[j + 1];
-				numbers[j + 1] = numbers[j];
-				numbers[j] = tmp;
+
+	function maoPao() {
+		var tmp;
+		for (var i = 0; i < arguments.length - 1; i++) {
+			var isSort = true;
+			for(var j = 0; j < arguments.length - 1 - i; j++) {
+				if(arguments[j] < arguments[j + 1]) {
+					isSort = false;
+					tmp = arguments[j + 1];
+					arguments[j + 1] = arguments[j];
+					arguments[j] = tmp;
+				}
+			}
+			if (isSort) {
+				break;
 			}
 		}
-		if (isSort) {
-			break;
-		}
+		console.log(arguments);
 	}
-	console.log(dd);
-	console.log(numbers);
+	maoPao(123,23,14,4356,67,83,5);
 	function getFb(n) {
 		var n1 = 1;
 		var n2 = 1;
