@@ -91,7 +91,17 @@
 		}
 		console.log(n3)
 	}
-	getFb(2)
+	getFb(2);
+	function max () {
+		var max = arguments[0];
+		for(var i = 0; i < arguments.length; i++) {
+			if (max < arguments[i]) {
+				max = arguments[i];
+			}
+		}
+		console.log(max);
+	}
+	max (123,34,5,16,42);
 </script>
 
 </html>
